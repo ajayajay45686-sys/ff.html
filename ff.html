@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>WELCOME</title>
+</head>
+<body>
+
+<center>
+
+<h1>TO-DO LIST</h1>
+
+<input type="text" id="input">
+<button onclick="create()">click</button>
+
+<h1>TASK LIST</h1>
+
+<div id="list"></div>
+
+<script>
+
+function create()
+{
+    let task = document.getElementById("input").value;
+
+    if(task.trim() == "")
+    {
+        alert("enter the task");
+        return;
+    }
+
+    let div = document.createElement("div");
+
+    let h3 = document.createElement("h3");
+    h3.innerText = task;
+
+    let del = document.createElement("button");
+    del.innerText = "delete";
+    del.onclick = function()
+    {
+        deleteTask(div);
+    };
+
+    let comp = document.createElement("button");
+    comp.innerText = "complete";
+    comp.onclick = function()
+    {
+        complete(h3);
+    };
+
+    div.appendChild(h3);
+    div.appendChild(del);
+    div.appendChild(comp);
+
+    document.getElementById("list").appendChild(div);
+
+    document.getElementById("input").value = "";
+}
+
+function deleteTask(div)
+{
+    div.remove();
+}
+
+function complete(h3)
+{
+    h3.style.textDecoration = "line-through";
+}
+
+</script>
+
+</center>
+
+</body>
+</html>
